@@ -1,112 +1,164 @@
+'use client'
+
+import { useWindowScroll } from "@uidotdev/usehooks";
 import Image from "next/image";
 
-export default function Home() {
+interface ExperienceType {
+  title: string
+  company: string
+  city: string
+  country: string
+  description: JSX.Element
+}
+
+const EXPERIENCES: Array<ExperienceType> = [
+  {
+    title: "Software Engineer",
+    company: "Barcelona Supercomputing Center",
+    city: "Barcelona",
+    country: "Spain",
+    description: <>
+      <ul className="list-disc ml-5">
+        <li>Interfacing with protein domain experts to understand their needs and translate them to software requirements </li>
+        <li>Developing multiple web applications that helps the scientific community to storage knowledge with Angular, Node.js, Django and MongoDB</li>
+        <li>Contributing to developing an open-source REST API for distributed resource management like SLURM. </li>
+      </ul>
+    </>
+  },
+  {
+    title: "Full-stack Developer",
+    company: "Università degli Studi di Padova",
+    city: "Padova",
+    country: "Italy",
+    description: <>
+      In one
+      <ul className="list-disc ml-5">
+        <li>Interfacing with protein domain experts to understand their needs and translate them to software requirements </li>
+        <li>Developing multiple web applications that helps the scientific community to storage knowledge with Angular, Node.js, Django and MongoDB</li>
+        <li>Contributing to developing an open-source REST API for distributed resource management like SLURM. </li>
+      </ul>
+    </>
+  },
+]
+
+function ExperienceItem({ experience }: { experience: ExperienceType }) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="flex gap-10 w-full">
+
+      <div className="flex flex-col items-center gap-4">
+        <span className="relative flex h-5 w-5 mt-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-5 w-5 bg-green-500"></span>
+        </span>
+
+        <div className=" w-[2px] bg-neutral-50 h-full"></div>
+      </div>
+      <div className="flex flex-col gap-2 ">
+        <h3 className="text-2xl font-bold">{experience.title}</h3>
+        <h4 className="text-lg">{experience.company}, {experience.city}, {experience.country}</h4>
+        <div className="text-neutral-400">
+          {experience.description}
         </div>
       </div>
+    </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+  )
+}
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+export default function Home() {
+  const scrollTo = useWindowScroll()[1];
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+  const scrollToSection = (id: string) => {
+    const elem = document.getElementById(id)
+    elem?.scrollIntoView({ behavior: "smooth" });
+  }
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+  return (
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+    <main className="min-h-screen flex flex-col items-center text-white">
+      <div className="fixed top-0 left-0 h-full w-full bg-gradient-to-b from-slate-950 to-slate-900 -z-50"></div>
+      <nav className="sticky top-4 flex gap-4">
+
+        <div className="flex gap-12 rounded-full bg-slate-800/75 px-12 py-2 font-semibold ">
+          <a className="cursor-pointer hover:text-sky-600"
+            onClick={() => scrollTo({ left: 0, top: 0, behavior: "smooth" })}>
+            lbit.dev
+          </a>
+        </div>
+
+        <div className="hidden md:flex gap-12 rounded-full bg-slate-800/75 px-12 py-2 font-semibold ">
+          <a className="cursor-pointer hover:text-sky-600"
+            onClick={() => scrollToSection("skills")}>
+            Skills
+          </a>
+          <a className="cursor-pointer hover:text-sky-600">Projects</a>
+          <a className="cursor-pointer hover:text-sky-600"
+            onClick={() => scrollToSection("experience")}>
+            Experience
+          </a>
+          <a className="cursor-pointer hover:text-sky-600">Education</a>
+          <a className="cursor-pointer hover:text-sky-600">Contact</a>
+        </div>
+
+      </nav>
+
+      <div className="my-12 flex flex-col items-center w-full gap-16">
+
+        <section className="flex flex-col items-center animate-fade-in w-full py-12">
+
+          <div className="flex flex-col md:flex-row gap-12 items-center justify-between max-w-screen-lg px-8">
+            <img className="bg-black rounded-full aspect-square w-64"
+              src="https://media.licdn.com/dms/image/D4D03AQEbBlPhv2thzg/profile-displayphoto-shrink_800_800/0/1666798199681?e=2147483647&v=beta&t=XoBQ_b2BTBDB9fmOBYwFPWEYGA3LhDb08mFgMmTSpAk">
+            </img>
+            <div className=" flex flex-col gap-4">
+              <h2 className="text-4xl font-bold">Luiggi Tenorio Ku</h2>
+              <span className="text-lg">
+                Design and develop first, then I exist
+              </span>
+            </div>
+          </div>
+
+        </section>
+
+        <section id="skills" className="flex flex-col items-center w-full py-20 animate-fade-in">
+          <div className="flex flex-col gap-12 items-center max-w-screen-lg px-8 ">
+            <h2 className="font-bold text-3xl">MY SKILLS</h2>
+            <div className="flex gap-12">
+              <div className="flex flex-col gap-2 items-center">
+                <img src={"/logos/JavaScript-logo.png"} alt="react" className="w-12 h-12" />
+                <label>Javascript</label>
+              </div>
+              <div className="flex flex-col gap-2 items-center">
+                <img src={"/logos/react.svg"} alt="react" className="w-12 h-12" />
+                <label>React</label>
+              </div>
+              <div className="flex flex-col gap-2 items-center">
+                <img src={"/logos/next.svg"} alt="react" className="w-12 h-12 dark:invert" />
+                <label>Next.js</label>
+              </div>
+              <div className="flex flex-col gap-2 items-center">
+                <img src={"/logos/python.svg"} alt="react" className="w-12 h-12 object-contain" />
+                <label>Python</label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="experience" className="flex flex-col items-center bg-slate-800/75 w-full py-20 animate-fade-in">
+          <div className="flex flex-col gap-12 items-center max-w-screen-lg px-8">
+
+            <h2 className=" font-bold text-3xl">MY WORK EXPERIENCES</h2>
+            {
+              EXPERIENCES.map(exp => {
+                return (
+                  <ExperienceItem key={exp.title} experience={exp} />
+
+                )
+              })
+            }
+          </div>
+        </section>
+
       </div>
     </main>
   );
