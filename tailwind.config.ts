@@ -10,7 +10,8 @@ const config: Config = {
     extend: {
       animation: {
         "fade-in": 'fadeIn .5s ease-in-out',
-        "fade-out": 'fadeOut .5s ease-in-out'
+        "fade-out": 'fadeOut .5s ease-in-out',
+        "pulse-long": 'pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;'
       },
       keyframes: {
         fadeIn: {
@@ -25,5 +26,6 @@ const config: Config = {
     }
   },
   plugins: [],
+  darkMode: "class"
 };
 export default config;

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import ThemeContextProvider from "@/context/theme-context";
+import ThemeSwitch from "@/components/ThemeSwitch";
+import ActiveSectionContextProvider from "@/context/active-section-context";
+import Navbar from "@/components/Navbar";
 
-const fontClass = Roboto({ 
-  subsets: ["latin-ext"],
-  weight: ["100", "300", "400", "500", "700", "900"]
-});
+const fontClass = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Luiggi Tenorio | Software Engineer",
-  description: "Software Engineer",
+  description: "Hi! I'm Luiggi, a Software Engineer with more than 5 years of experience.",
 };
 
 export default function RootLayout({
@@ -18,8 +19,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={fontClass.className}>{children}</body>
-    </html>
+    <ThemeContextProvider>
+      <ActiveSectionContextProvider>
+        <html lang="en">
+          <body className={`${fontClass.className} bg-gray-50 text-gray-900 relative dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}>
+
+            <div className="animate-pulse-long bg-[#fbe2e3] absolute top-[-1rem] -z-10 right-[10rem] h-[30rem] w-[38rem] rounded-full blur-[12rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
+            <div className="animate-pulse-long bg-[#dbd7fb] absolute top-[-5rem] -z-10 left-[-35rem] h-[30rem] w-[50rem] rounded-full blur-[12rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div>
+            <Navbar/>
+
+            {children}
+            <ThemeSwitch />
+          </body>
+        </html>
+      </ActiveSectionContextProvider>
+    </ThemeContextProvider>
   );
 }
