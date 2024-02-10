@@ -12,7 +12,8 @@ export default function Intro() {
     const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
     return (
-        <section className="animate-fade-in flex flex-col md:flex-row gap-10 items-center justify-between max-w-screen-lg px-6 mb-24">
+        <section ref={ref} id='home'
+            className="animate-fade-in flex flex-col md:flex-row gap-10 items-center justify-between max-w-screen-lg px-6 mb-24 scroll-mt-40">
 
             <motion.div
                 initial={{ opacity: 0, scale: 0 }}

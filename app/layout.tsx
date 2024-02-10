@@ -21,11 +21,12 @@ export default function RootLayout({
   return (
     <ThemeContextProvider>
       <ActiveSectionContextProvider>
-        <html lang="en">
+        <html lang="en" className="!scroll-smooth">
           <body className={`${fontClass.className} bg-gray-50 text-gray-900 relative dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}>
 
-            <div className="animate-pulse-long bg-[#fbe2e3] absolute top-[-1rem] -z-10 right-[10rem] h-[30rem] w-[38rem] rounded-full blur-[12rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
-            <div className="animate-pulse-long bg-[#dbd7fb] absolute top-[-5rem] -z-10 left-[-35rem] h-[30rem] w-[50rem] rounded-full blur-[12rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div>
+            <div className="animate-pulse-long bg-[#fbe2e3] absolute top-[-1rem] -z-10 right-[5rem] h-[40rem] w-[38rem] rounded-full blur-[14rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
+            <div className="animate-pulse-long bg-[#dbd7fb] absolute top-[-5rem] -z-10 left-[-35rem] h-[50rem] w-[50rem] rounded-full blur-[14rem] sm:w-[68.75rem] dark:bg-[#676394] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem]"></div>
+            
             <Navbar/>
 
             {children}

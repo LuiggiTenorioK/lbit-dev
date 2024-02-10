@@ -1,4 +1,7 @@
+"use client"
+
 import { SKILLS } from "@/lib/data";
+import { useSectionInView } from "@/lib/hooks";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 
@@ -17,13 +20,15 @@ const fadeInAnimationVariants = {
 };
 
 export default function Skills() {
+    const { ref } = useSectionInView("Skills");
+
     return (
-        <section className="flex flex-col gap-12 items-center max-w-screen-lg px-6 mb-24">
+        <section ref={ref} id="skills"
+            className="flex flex-col gap-12 items-center max-w-screen-lg px-6 mb-24 scroll-mt-32">
             <motion.h2
                 className="font-bold text-3xl"
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
-                id="about"
             >MY SKILLS</motion.h2>
             <div className="flex flex-wrap gap-4 items-center justify-center">
                 {SKILLS.map((skill, index) => (
@@ -35,6 +40,7 @@ export default function Skills() {
                         whileInView="animate"
                         viewport={{
                             once: true,
+                            margin: "50px"
                         }}
                         custom={index}
                     >
