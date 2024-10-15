@@ -24,14 +24,14 @@ export default function Contact() {
           href="https://www.linkedin.com/in/ltenoriok/"
           target="_blank"
         >
-          <i className="fa-brands fa-linkedin"></i>
+          LinkedIn<i className="fa-brands fa-linkedin"></i>
         </a>
         <a
           className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full hover:scale-105 active:scale-100 transition cursor-pointer border border-black/10 dark:bg-white/10 dark:text-white/60"
           href="https://github.com/LuiggiTenorioK"
           target="_blank"
         >
-          <i className="fa-brands fa-github"></i>
+          GitHub<i className="fa-brands fa-github"></i>
         </a>
       </div>
     </section>
