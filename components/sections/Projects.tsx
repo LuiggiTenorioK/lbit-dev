@@ -77,6 +77,13 @@ export default function Projects() {
         image="/images/b2-landing.png"
         link="https://b2.pe/"
       />
+
+      <ProjectCard
+        title="Protein Ensemble Database deposition service"
+        description="PED is a web-based tool that allows users to deposit protein structures in the Protein Ensemble Database."
+        image="/images/ped-deposition.png"
+        link="https://deposition.proteinensemble.org/"
+      />
     </section>
   );
 }
